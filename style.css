@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jordan Avery — Software Developer</title>
+  <meta name="description" content="Portfolio of Jordan Avery, full-stack software developer. Projects, skills, and contact." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ====== TOP NAV (styled as a file path / breadcrumb) ====== -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="#top" class="logo">jordan<span class="logo__cursor">_</span></a>
+      <nav class="pathnav" aria-label="Primary">
+        <a href="#about"><span class="pathnav__sep">~/</span>about</a>
+        <a href="#projects"><span class="pathnav__sep">~/</span>projects</a>
+        <a href="#skills"><span class="pathnav__sep">~/</span>skills</a>
+        <a href="#contact"><span class="pathnav__sep">~/</span>contact</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme" title="Toggle theme">
+        <span class="theme-toggle__icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ====== HERO: TERMINAL WINDOW ====== -->
+    <section class="hero" aria-label="Introduction">
+      <div class="hero__text">
+        <p class="eyebrow">// full-stack developer</p>
+        <h1 class="hero__title">Building things that<br>actually <span class="accent">ship</span>.</h1>
+        <p class="hero__lead">
+          I'm Jordan Avery. I design and build web applications end to end —
+          from the database schema to the pixel on screen — and I write about
+          what I learn along the way.
+        </p>
+        <div class="hero__cta">
+          <a href="#projects" class="btn btn--primary">View projects</a>
+          <a href="#contact" class="btn btn--ghost">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="terminal" role="img" aria-label="Terminal window showing a whoami command output">
+        <div class="terminal__bar">
+          <span class="terminal__dot terminal__dot--red"></span>
+          <span class="terminal__dot terminal__dot--yellow"></span>
+          <span class="terminal__dot terminal__dot--green"></span>
+          <span class="terminal__title">guest@portfolio — zsh</span>
+        </div>
+        <div class="terminal__body">
+          <p><span class="prompt">guest@portfolio</span>:<span class="path">~</span>$ <span id="typedCommand"></span><span class="cursor" id="typeCursor">▌</span></p>
+          <div id="typedOutput" class="terminal__output" hidden>
+            <p>name      : Jordan Avery</p>
+            <p>role      : Full-Stack Developer</p>
+            <p>stack     : JS / Node / React / MongoDB</p>
+            <p>location  : Remote</p>
+            <p>status    : <span class="ok">available for work</span></p>
+            <p class="terminal__next"><span class="prompt">guest@portfolio</span>:<span class="path">~</span>$ <span class="cursor">▌</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== ABOUT ====== -->
+    <section id="about" class="section" aria-labelledby="about-heading">
+      <div class="section__head">
+        <p class="eyebrow">~/about</p>
+        <h2 id="about-heading">A bit about me</h2>
+      </div>
+      <div class="about__grid">
+        <p class="about__text">
+          I'm a full-stack developer focused on building reliable, fast,
+          and well-documented web applications. I enjoy turning ambiguous
+          ideas into working software — wiring up APIs, designing data
+          models, and polishing the interface until it feels effortless
+          to use.
+        </p>
+        <p class="about__text">
+          Outside of client work, I maintain a couple of open-source tools,
+          write short technical notes, and I'm always tinkering with a new
+          side project. This site is itself one of those projects: a small
+          full-stack app with its own API and database powering the
+          sections below.
+        </p>
+      </div>
+    </section>
+
+    <!-- ====== PROJECTS ====== -->
+    <section id="projects" class="section" aria-labelledby="projects-heading">
+      <div class="section__head">
+        <p class="eyebrow">~/projects</p>
+        <h2 id="projects-heading">Selected work</h2>
+        <p class="section__sub">Pulled live from the portfolio API and database.</p>
+      </div>
+
+      <div id="projectsList" class="projects-grid" aria-live="polite">
+        <!-- Project cards are injected here by js/main.js -->
+        <p class="status-msg" id="projectsStatus">Loading projects…</p>
+      </div>
+    </section>
+
+    <!-- ====== SKILLS ====== -->
+    <section id="skills" class="section" aria-labelledby="skills-heading">
+      <div class="section__head">
+        <p class="eyebrow">~/skills</p>
+        <h2 id="skills-heading">Tools &amp; technologies</h2>
+        <p class="section__sub">Proficiency levels, also served from the API.</p>
+      </div>
+
+      <div id="skillsList" class="skills-grid" aria-live="polite">
+        <p class="status-msg" id="skillsStatus">Loading skills…</p>
+      </div>
+    </section>
+
+    <!-- ====== CONTACT ====== -->
+    <section id="contact" class="section section--contact" aria-labelledby="contact-heading">
+      <div class="section__head">
+        <p class="eyebrow">~/contact</p>
+        <h2 id="contact-heading">Send a message</h2>
+        <p class="section__sub">This form posts to <code>/api/contact</code> and is stored in the database.</p>
+      </div>
+
+      <form id="contactForm" class="contact-form" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name" placeholder="Ada Lovelace" />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email" placeholder="ada@example.com" />
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project…"></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary" id="contactSubmit">Send message</button>
+        <p id="contactStatus" class="contact-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Jordan Avery. Built with HTML, CSS, JS, Express &amp; MongoDB.</p>
+    <div class="footer__links">
+      <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:hello@example.com">Email</a>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
